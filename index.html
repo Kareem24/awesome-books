@@ -3,9 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <script src="./js/index.js" defer></script>
-    <link rel="stylesheet" href="./css/index.css" />
+    <title>books</title>
   </head>
-  <body></body>
+  <body>
+    <header><h1>Awesome books</h1></header>
+    <div class="added-books"></div>
+    <form class="book-form" id="form">
+      <!-- <label for="title">title</label> -->
+      <input type="text" name="title" id="title" placeholder="Title" />
+      <br /><br />
+      <input type="text" name="author" id="author" placeholder="Author" /><br /><br />
+      <button type="submit">add</button>
+    </form>
+  </body>
 </html>
