@@ -14,8 +14,9 @@ const bookList = document.querySelector('.added-books');
 const addToLocalStorage = data => {
   localStorage.setItem('book', JSON.stringify(data));
 };
-const getLocalStorage = () =>
-  localStorage.getItem('book') ? JSON.parse(localStorage.getItem('book')) : [];
+const getLocalStorage = () => {
+  return (localStorage.getItem('book') ? JSON.parse(localStorage.getItem('book')) : [])
+};
 const removeLocalStorage = id => {
   const books = getLocalStorage();
   return books.filter(book => book.id !== id);
