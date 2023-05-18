@@ -1,0 +1,11 @@
+.book-section {
+  margin: 20px;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 20px;
+}

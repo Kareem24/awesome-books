@@ -3,18 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
     <script src="./js/index.js" defer></script>
     <title>books</title>
   </head>
   <body>
-    <header><h1>Awesome books</h1></header>
-    <div class="added-books"></div>
+    <section class="book-section">
+      <header><h1>Awesome books</h1></header>
+      <article class="added-books"></article>
+    </section>
     <form class="book-form" id="form">
       <!-- <label for="title">title</label> -->
-      <input type="text" name="title" id="title" placeholder="Title" />
-      <br /><br />
-      <input type="text" name="author" id="author" placeholder="Author" /><br /><br />
-      <button type="submit">add</button>
+      <input type="text" name="title" id="title" placeholder="Title" aria-label="Title" />
+
+      <input type="text" name="author" id="author" placeholder="Author" aria-label="Author" />
+      <button type="submit">Add</button>
     </form>
   </body>
 </html>

@@ -55,7 +55,7 @@ const addBook = e => {
   const book = new FormData(e.currentTarget);
   const value = [...book.values()];
   const entries = Object.fromEntries([...book.entries()]);
-  if (value.includes('')) return;
+  if ((value[0] || value[1]).trim().length === 0) return;
   bookData = getLocalStorage();
   bookData.push({ id: new Date().getTime().toString(), ...entries });
   createNewBook({ id: new Date().getTime().toString(), ...entries });
