@@ -34,7 +34,8 @@ const createNewBook = ({ id, title, author }) => {
         <p class="author">${author} 
         </p>
         <button type="button" class='delete-btn'>Remove</button>
-        <hr />`;
+            <div class="horizontal-line"></div>
+`;
   bookList.appendChild(element);
 
   const deleteBtn = element.querySelector('.delete-btn');
