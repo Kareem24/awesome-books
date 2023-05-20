@@ -1,0 +1,18 @@
+.book-section {
+  margin: 20px;
+}
+
+.book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 300px;
+  margin: 20px;
+}
+
+.horizontal-line {
+  max-width: 300px;
+  height: 1px;
+  background: #0002;
+  margin-top: 10px;
+}
