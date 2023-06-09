@@ -1,70 +1,80 @@
-let bookData = [];
+class GetElement {
+  constructor(selector, isList) {
+    this.isList = isList;
+    this.selector = selector;
+    if (this.isList) return document.querySelectorAll(this.selector);
 
-const form = document.querySelector('#form');
-const title = document.querySelector('#title');
-const author = document.querySelector('#author');
-const bookList = document.querySelector('.added-books');
-
-const addToLocalStorage = data => {
-  localStorage.setItem('book', JSON.stringify(data));
-};
-function getLocalStorage() {
-  return localStorage.getItem('book') ? JSON.parse(localStorage.getItem('book')) : [];
-}
-const removeLocalStorage = id => {
-  const books = getLocalStorage();
-  return books.filter(book => book.id !== id);
-};
-const deleteBook = e => {
-  const el = e.currentTarget.parentElement;
-  const { id } = el.dataset;
-  bookList.removeChild(el);
-  removeLocalStorage(id);
-  const newBook = removeLocalStorage(id);
-  addToLocalStorage(newBook);
-};
-
-const createNewBook = ({ id, title, author }) => {
-  const element = document.createElement('article');
-  element.classList.add('book');
-  const attr = document.createAttribute('data-id');
-  attr.value = id;
-  element.setAttributeNode(attr);
-  element.innerHTML = `<p class="title">${title}</p>
-        <p class="author">${author} 
-        </p>
-        <button type="button" class='delete-btn'>Remove</button>
-            <div class="horizontal-line"></div>
-`;
-  bookList.appendChild(element);
-
-  const deleteBtn = element.querySelector('.delete-btn');
-  deleteBtn.addEventListener('click', deleteBook);
-};
-
-const loadBook = () => {
-  const books = getLocalStorage();
-  if (books.length > 0) {
-    books.forEach(book => {
-      createNewBook(book);
-    });
+    return document.querySelector(this.selector);
   }
-};
+}
+class LocalStorage {
+  constructor(name) {
+    this.name = name;
+  }
 
-const addBook = e => {
-  e.preventDefault();
-  const book = new FormData(e.currentTarget);
-  const value = [...book.values()];
-  const entries = Object.fromEntries([...book.entries()]);
-  if ((value[0] || value[1]).trim().length === 0 || value.includes('')) return;
-  bookData = getLocalStorage();
-  bookData.push({ id: new Date().getTime().toString(), ...entries });
-  createNewBook({ id: new Date().getTime().toString(), ...entries });
-  addToLocalStorage(bookData);
+  add = data => localStorage.setItem(this.name, JSON.stringify(data));
 
-  title.value = '';
-  author.value = '';
-};
+  get = () => (localStorage.getItem(this.name) ? JSON.parse(localStorage.getItem(this.name)) : []);
 
-form.addEventListener('submit', addBook);
-window.addEventListener('DOMContentLoaded', loadBook);
+  remove = id => this.get().filter(book => book.id !== id);
+}
+class Book {
+  constructor() {
+    this.localStorage = new LocalStorage('books');
+    this.bookData = [];
+    this.bookList = new GetElement('.added-books', false);
+  }
+
+  #delete = e => {
+    const el = e.currentTarget.parentElement;
+    const { id } = el.dataset;
+    this.bookList.removeChild(el);
+    this.bookData = this.localStorage.remove(id);
+    this.localStorage.add(this.bookData);
+  };
+
+  #create = ({ id, title, author }) => {
+    const element = document.createElement('article');
+    element.classList.add('book');
+    const attr = document.createAttribute('data-id');
+    attr.value = id;
+    element.setAttributeNode(attr);
+    element.innerHTML = `<p class="title">${title}</p>
+        <p class="author">${author} </p>
+        <button type="button" class='delete-btn'>Remove</button>
+        <div class="horizontal-line"></div>`;
+
+    this.bookList.appendChild(element);
+    const deleteBtn = element.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', this.#delete);
+  };
+
+  add = e => {
+    e.preventDefault();
+    const book = new FormData(e.currentTarget);
+    const id = new Date().getTime().toString();
+    const value = [...book.values()];
+    const entries = Object.fromEntries([...book.entries()]);
+    if ((value[0].trim() && value[1].trim()).length === 0 || value.includes('')) return;
+    this.bookData = this.localStorage.get();
+    this.bookData.push({ id, ...entries });
+    this.#create({ id, ...entries });
+    this.localStorage.add(this.bookData);
+    const title = new GetElement('#title', false);
+    const author = new GetElement('#author', false);
+    title.value = '';
+    author.value = '';
+  };
+
+  loadBook = () => {
+    const books = this.localStorage.get();
+    if (books.length > 0) {
+      books.map(book => this.#create(book));
+    }
+  };
+}
+
+const bookLists = new Book();
+const form = new GetElement('#form', false);
+form.addEventListener('submit', bookLists.add);
+window.addEventListener('DOMContentLoaded', bookLists.loadBook);
