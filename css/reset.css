@@ -1,11 +1,8 @@
 /* Base styles */
-*,
-*::after,
-*::before {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 li {
@@ -16,12 +13,7 @@ a {
   text-decoration: none;
 }
 
-img,
-picture {
+img {
   display: block;
   width: 100%;
-}
-
-button {
-  cursor: pointer;
 }
