@@ -1,23 +1,6 @@
-class GetElement {
-  constructor(selector, isList) {
-    this.isList = isList;
-    this.selector = selector;
-    return this.isList
-      ? document.querySelectorAll(this.selector)
-      : document.querySelector(this.selector);
-  }
-}
-class LocalStorage {
-  constructor(name) {
-    this.name = name;
-  }
+import LocalStorage from './localStorage';
+import GetElement from './getElement';
 
-  addToLocalStorage = data => localStorage.setItem(this.name, JSON.stringify(data));
-
-  get = () => (localStorage.getItem(this.name) ? JSON.parse(localStorage.getItem(this.name)) : []);
-
-  removeFromLocalStorage = id => this.get().filter(book => book.id !== id);
-}
 class Book {
   constructor() {
     this.localStorage = new LocalStorage('books');
@@ -85,8 +68,4 @@ class Book {
     }
   };
 }
-
-const bookLists = new Book();
-const form = new GetElement('#form', false);
-form.addEventListener('submit', bookLists.addToBooklist);
-window.addEventListener('DOMContentLoaded', bookLists.loadBook);
+export default Book;
