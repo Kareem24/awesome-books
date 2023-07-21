@@ -15,7 +15,14 @@
 
 .navbar .navlinks {
   gap: 1rem;
+}
+
+.navlinks .link {
   cursor: pointer;
+}
+
+.link:hover {
+  color: blue;
 }
 
 .book-section {
