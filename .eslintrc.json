@@ -16,7 +16,8 @@
     "arrow-parens": "off",
     "max-classes-per-file": 0,
     "linebreak-style": 0,
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "import/no-extraneous-dependencies": "off"
   },
   "ignorePatterns": ["dist/", "build/"]
 }
