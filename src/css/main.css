@@ -7,6 +7,15 @@
   --dark-gray: #f3f0f0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
 .nav-wrapper {
   border: 2px solid var(--black);
   padding: 8px;
@@ -168,11 +177,6 @@
 }
 
 @media (max-width: 600px) {
-  body {
-    position: relative;
-    overflow-x: hidden;
-  }
-
   .mobile-menu {
     position: absolute;
     right: 0;
