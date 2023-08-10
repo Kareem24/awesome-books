@@ -27,6 +27,10 @@ class NavBar {
     hide.forEach(el => el.classList.add(className));
     show.classList.remove(className);
   };
+
+  menu = (el, className) => {
+    el.classList.toggle(className);
+  };
 }
 
 export default NavBar;

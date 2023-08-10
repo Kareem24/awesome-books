@@ -36,5 +36,8 @@
     "stylelint:check": "npx stylelint \"**/*.css\"",
     "eslint": "npx eslint . --fix",
     "eslint:check": "npx eslint ."
+  },
+  "dependencies": {
+    "luxon": "^3.4.0"
   }
 }
