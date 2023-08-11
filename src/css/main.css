@@ -18,7 +18,7 @@ body {
 
 .nav-wrapper {
   border: 2px solid var(--black);
-  padding: 8px;
+  padding: 1rem 2rem;
   border-radius: 8px;
   margin: 10px auto;
   width: 95%;
@@ -31,8 +31,6 @@ body {
 
 .navbar {
   justify-content: space-between;
-  width: 90%;
-  margin: auto;
 }
 
 .btn-menu {
@@ -61,6 +59,27 @@ body {
 .date {
   text-align: right;
   margin-right: 2.5%;
+}
+
+.alert {
+  height: 50px;
+}
+
+.alert p {
+  padding: 0.5rem 1rem;
+  width: 30%;
+  margin: auto;
+  border-radius: 9px;
+}
+
+.alert-success {
+  background: #90ee90;
+  color: #013220;
+}
+
+.alert-danger {
+  background: #ffcfcf;
+  color: #620000;
 }
 
 .book-section {
@@ -186,11 +205,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    /* height: 40vh; */
     padding: 2rem 1rem;
     width: 50%;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
   }
 
   .hide-nav {

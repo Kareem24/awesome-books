@@ -8,12 +8,23 @@ class Book {
     this.bookList = new GetElement('.added-books', false);
   }
 
+  #showAlert = (action, message) => {
+    const alert = new GetElement('.alert p');
+    alert.classList.add(`alert-${action}`);
+    alert.textContent = message;
+    setTimeout(() => {
+      alert.textContent = '';
+      alert.classList.remove(`alert-${action}`);
+    }, 1000);
+  };
+
   #deleteBook = e => {
     const el = e.currentTarget.parentElement.parentElement;
     const { id } = el.dataset;
     this.bookList.removeChild(el);
     this.bookData = this.localStorage.removeFromLocalStorage(id);
     this.localStorage.addToLocalStorage(this.bookData);
+    this.#showAlert('danger', 'Book deleted');
     if (this.bookList.children.length === 0) {
       this.bookList.innerHTML = '<p class="red">this book is empty</p>';
     }
@@ -52,6 +63,7 @@ class Book {
     this.localStorage.addToLocalStorage(this.bookData);
     const title = new GetElement('#title', false);
     const author = new GetElement('#author', false);
+    this.#showAlert('success', 'Book Added ');
     title.value = '';
     author.value = '';
   };

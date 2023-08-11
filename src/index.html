@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="./css/index.css" /> -->
-    <!-- <script src="./dist/main.js" defer></script> -->
     <title><%=htmlWebpackPlugin.options.title%></title>
   </head>
   <body>
@@ -42,10 +40,13 @@
         </button>
       </nav>
     </div>
-    <div class="date ">
-      <p class="date">
+    <div class="date">
+      <p class="full-date">
         Aug 9, 2023, 3:47 PM
       </p>
+    </div>
+    <div class="alert section-center">
+      <p></p>
     </div>
     <section class="book-section">
       <header class="d-flex"><h1>All Awesome Books</h1></header>
@@ -77,9 +78,9 @@
 
     <section class="contact section-center">
       <h2>Contact Information</h2>
-      <form class="form d-flex contact-form">
-        <input type="text" class="name inputs" placeholder="name" />
-        <input type="mail" class="mail inputs" placeholder="enter your mail" />
+      <form class="form d-flex contact-form" action="https://formspree.io/f/xknangjb" method="post">
+        <input type="text" class="name inputs" placeholder="name" required />
+        <input type="mail" class="mail inputs" placeholder="enter your mail" required />
         <textarea
           name="message"
           id="message"
@@ -87,6 +88,7 @@
           rows="10"
           placeholder="enter your message"
           class="inputs"
+          required
         ></textarea>
         <button class=" submit-btn" type="submit">Submit</button>
       </form>

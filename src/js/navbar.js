@@ -10,6 +10,8 @@ class NavBar {
 
   changePage = e => {
     const current = e.currentTarget;
+    const mobileMenu = new GetElement('.mobile-menu', false);
+
     if (current.classList.contains('add')) {
       this.showHide(this.addNewBook, 'd-none', this.contact, this.bookListSection);
     }
@@ -21,6 +23,7 @@ class NavBar {
       this.contact.classList.remove('d-none');
       this.addNewBook.classList.add('d-none');
     }
+    mobileMenu.classList.add('hide-nav');
   };
 
   showHide = (show, className, ...hide) => {
