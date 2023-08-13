@@ -62,14 +62,15 @@ body {
 }
 
 .alert {
-  height: 50px;
+  height: 30px;
 }
 
 .alert p {
   padding: 0.5rem 1rem;
-  width: 30%;
+  width: 80%;
   margin: auto;
   border-radius: 9px;
+  font-size: 0.8rem;
 }
 
 .alert-success {
@@ -157,6 +158,13 @@ body {
   margin: auto;
 }
 
+.contact,
+.add-new-book,
+.book-section {
+  min-height: 60vh;
+  padding-bottom: 60px;
+}
+
 .form {
   margin: 10px auto;
   display: flex;
@@ -191,8 +199,11 @@ body {
 .footer-container {
   position: fixed;
   left: 2.5%;
-  bottom: 10px;
+  bottom: 0;
   width: 95%;
+  color: var(--white);
+  background: var(--black);
+  margin-bottom: 2px;
 }
 
 @media (max-width: 600px) {
@@ -242,5 +253,9 @@ body {
     color: var(--white);
     margin-bottom: 2rem;
     align-self: flex-start;
+  }
+
+  .book-section h1 {
+    font-size: 2rem;
   }
 }
