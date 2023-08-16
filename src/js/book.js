@@ -1,23 +1,6 @@
-class GetElement {
-  constructor(selector, isList) {
-    this.isList = isList;
-    this.selector = selector;
-    return this.isList
-      ? document.querySelectorAll(this.selector)
-      : document.querySelector(this.selector);
-  }
-}
-class LocalStorage {
-  constructor(name) {
-    this.name = name;
-  }
+import LocalStorage from './localStorage';
+import GetElement from './getElement';
 
-  addToLocalStorage = data => localStorage.setItem(this.name, JSON.stringify(data));
-
-  get = () => (localStorage.getItem(this.name) ? JSON.parse(localStorage.getItem(this.name)) : []);
-
-  removeFromLocalStorage = id => this.get().filter(book => book.id !== id);
-}
 class Book {
   constructor() {
     this.localStorage = new LocalStorage('books');
@@ -25,12 +8,23 @@ class Book {
     this.bookList = new GetElement('.added-books', false);
   }
 
+  #showAlert = (action, message) => {
+    const alert = new GetElement('.alert p');
+    alert.classList.add(`alert-${action}`);
+    alert.textContent = message;
+    setTimeout(() => {
+      alert.textContent = '';
+      alert.classList.remove(`alert-${action}`);
+    }, 1000);
+  };
+
   #deleteBook = e => {
     const el = e.currentTarget.parentElement.parentElement;
     const { id } = el.dataset;
     this.bookList.removeChild(el);
     this.bookData = this.localStorage.removeFromLocalStorage(id);
     this.localStorage.addToLocalStorage(this.bookData);
+    this.#showAlert('danger', 'Book deleted');
     if (this.bookList.children.length === 0) {
       this.bookList.innerHTML = '<p class="red">this book is empty</p>';
     }
@@ -69,6 +63,7 @@ class Book {
     this.localStorage.addToLocalStorage(this.bookData);
     const title = new GetElement('#title', false);
     const author = new GetElement('#author', false);
+    this.#showAlert('success', 'Book Added ');
     title.value = '';
     author.value = '';
   };
@@ -85,8 +80,4 @@ class Book {
     }
   };
 }
-
-const bookLists = new Book();
-const form = new GetElement('#form', false);
-form.addEventListener('submit', bookLists.addToBooklist);
-window.addEventListener('DOMContentLoaded', bookLists.loadBook);
+export default Book;

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=htmlWebpackPlugin.options.title%></title>
+  </head>
+  <body>
+    <div class="nav-wrapper">
+      <nav class="navbar d-flex">
+        <a href="#" class="logo">Awesome Books</a>
+        <div class="mobile-menu hide-nav">
+          <button type="button" class="btn-menu close-menu" aria-label=" the close menu icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+              <path
+                fill="currentColor"
+                d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z"
+              />
+            </svg>
+          </button>
+          <ul class="navlinks d-flex" role="menu" aria-label="menu">
+            <li class="link add" tabindex="2" role="menuitem">
+              add
+            </li>
+            <li class="divider" role="menuitem"></li>
+            <li class="link list" tabindex="3" role="menuitem">
+              list
+            </li>
+            <li class="divider" role="menuitem"></li>
+
+            <li class="link contact-us" tabindex="4" role="menuitem">
+              contact
+            </li>
+          </ul>
+        </div>
+        <button type="button" aria-label=" click here to show the menu" class="btn-menu hamburger">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+    <div class="date">
+      <p class="full-date">
+        Aug 9, 2023, 3:47 PM
+      </p>
+    </div>
+    <div class="alert section-center">
+      <p></p>
+    </div>
+    <section class="book-section">
+      <header class="d-flex"><h1>All Awesome Books</h1></header>
+      <article class="added-books section-center"></article>
+    </section>
+    <section class="add-new-book ">
+      <h2 class="new-book-list">add new book</h2>
+
+      <form class="form " id="form">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Title"
+          aria-label="Title"
+          class="inputs"
+        />
+        <input
+          type="text"
+          name="author"
+          id="author"
+          class="inputs"
+          placeholder="Author"
+          aria-label="Author"
+        />
+        <button type="submit" class="submit-btn" aria-label="click to add book">Add</button>
+      </form>
+    </section>
+
+    <section class="contact section-center">
+      <h2>Contact Information</h2>
+      <form class="form d-flex contact-form" action="https://formspree.io/f/xknangjb" method="post">
+        <input type="text" class="name inputs" placeholder="name" required />
+        <input type="mail" class="mail inputs" placeholder="enter your mail" required />
+        <textarea
+          name="message"
+          id="message"
+          cols="30"
+          rows="10"
+          placeholder="enter your message"
+          class="inputs"
+          required
+        ></textarea>
+        <button class=" submit-btn" type="submit">Submit</button>
+      </form>
+    </section>
+    <div class="nav-wrapper footer-container">
+      <footer class="footer ">
+        <p class="copywrite">copywrite &copy;</p>
+      </footer>
+    </div>
+  </body>
+</html>

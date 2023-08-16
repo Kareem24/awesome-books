@@ -4,6 +4,7 @@
 
 .section-center {
   margin: 20px auto;
+  text-align: center;
 }
 
 .d-flex {
@@ -13,4 +14,8 @@
 
 button {
   cursor: pointer;
+}
+
+.d-none {
+  display: none;
 }
