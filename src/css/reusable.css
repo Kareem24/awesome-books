@@ -1,0 +1,21 @@
+.text-center {
+  text-align: center;
+}
+
+.section-center {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+.d-none {
+  display: none;
+}
